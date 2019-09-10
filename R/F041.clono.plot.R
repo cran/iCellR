@@ -61,10 +61,14 @@ clono.plot <- function (x = NULL,
   }
   ## clonotype
       colono <- unique(x@vdj.data[1:2])
-      row.names(colono) <- colono$barcode
+      cell.barcodes <- colono$barcode
+      cell.barcodes <- gsub("-",".",cell.barcodes)
+      row.names(colono) <- cell.barcodes
       colono$raw_clonotype_id <- gsub("clonotype"," ", colono$raw_clonotype_id)
       colono <- colono[1]
       colnames(colono) <- c("Clonotypes")
+      MyRows <- rownames(DATA)
+      rownames(DATA) <- gsub("-",".",MyRows)
       colonoData <- merge(DATA,colono, by="row.names", all.x=TRUE, all.y=FALSE)
       colonoData$Clonotypes <- gsub( " ", "", colonoData$Clonotypes)
       colonoData$Clonotypes[is.na(colonoData$Clonotypes)] <- "NA"

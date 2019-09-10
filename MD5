@@ -1,6 +1,6 @@
-46a9fd6a997148f44aa8e6bbdcefcf05 *DESCRIPTION
-11557efea45151e1a97a76b04d84dae4 *NAMESPACE
-483cca65d16069709b3fcc107d71b7a0 *R/F001.load10x.R
+d98c2612e2092eb4aaff9ef3fdaf0179 *DESCRIPTION
+c73c1cc44b9e28be59219343c3523165 *NAMESPACE
+6337644c5b68d77587a31f5f6c4c016b *R/F001.load10x.R
 09dc68431449d737b13334bc54856832 *R/F002.data.aggregation.R
 7b94d4d5e0335b2f20e655ae17957dd6 *R/F003.make.obj.R
 3b2fd2e633b84ec9376c1d0f9b2dbacf *R/F004.qc.stats.R
@@ -19,7 +19,7 @@ a3cf5d6f07c27afc43e1fef28a145a09 *R/F014.find.dim.genes.R
 05e475703b371b31836f051e9f734944 *R/F017.run.pc.tsne.R
 dae1a4144ad30dd4e7817922eca17b86 *R/F018.run.umap.R
 3d1392a440c2757dc50640501615484d *R/F019.run.diffusion.map.R
-26ca1e4b4a4a3b524e4e887d6f3846a5 *R/F020.cluster.plot.R
+9e82bc1b2a753fa1f1f2a1152182f221 *R/F020.cluster.plot.R
 5004d21980d8a6629811aff0b2a9a0aa *R/F021.clust.avg.exp.R
 0690240543d12a93e75908ad7f4995d1 *R/F022.run.imput.R
 32a626b0dd312e609f421144d31880e3 *R/F023.cell.gating.R
@@ -38,9 +38,9 @@ f19afc8b9a88ee6edeb198509ae7fac8 *R/F033.cell.type.pred.R
 7b1ad615a9c4f9195538c96ff652a450 *R/F036.add.adt.R
 745d8f9b02d4edf17ffd657aa6a64193 *R/F037.norm.adt.R
 cddb4c94090e0776aece156722429b54 *R/F038.adt.rna.merge.R
-16548c8d8004aa640b8d21334829c073 *R/F039.prep.vdj.R
+728578de940a97ac40b87a05070d7c8c *R/F039.prep.vdj.R
 99451f2377924febc3bb694b72bf9a26 *R/F040.add.vdj.R
-2ee90ac8cb55c35ffbde04df518cc38e *R/F041.clono.plot.R
+e9b9c2baac5d876708afad8ddd840657 *R/F041.clono.plot.R
 e420231f457afd5038c0b8b691ee515c *R/F042vdj.stats.R
 7e03b98aaba4b73075eeac5669d8c7c0 *R/F043.run.tsne.R
 e79c8d44197311849da07b3a2f36d813 *R/F044.myclass.R
@@ -49,7 +49,8 @@ e215614562f811fe186e8c2f180256eb *R/F045.cc.R
 14d8e5431ff5482a15bf5c1ea248ec7e *R/data.demo.obj.R
 01ec88c6093c3b29cb7c8b3c4716da7f *R/data.g2m.R
 dd5e58c24f25bd635a62d7e8a29ef833 *R/gg.cor.R
-28fcf7777f6cc693b38cec904439936e *R/globalVariables.R
+a000506b6f07f357613264d47f534364 *R/globalVariables.R
+39d2d3a8235487fca3121865164ee241 *R/hto.anno.R
 e810b98bdf4c5d6566a944eb870c1d45 *R/k.myImp.R
 802b6da6047ce7943c2a1cfbd06f4f6e *R/k.pseudotime.R
 9f1a94eabef3063adc12b7711979106d *R/k.run.cca.R
@@ -58,6 +59,7 @@ c8626f6a332dff8b9b29c2b8e24352aa *data/g2m.phase.rda
 33a2facc7b2989ec2df1dd0b6db1fb37 *data/s.phase.rda
 de78fb4613780372863753852fc03f48 *inst/extdata/all_contig_annotations.csv
 06ced81080d1bae9d8f38a2ef20880fb *inst/extdata/demo_data.txt
+805cfc956fe1b8445048f5f029738836 *inst/extdata/dense_umis.tsv
 abdd67c8870e90c6478a8d72738e5730 *inst/extdata/filtered_gene_bc_matrices/barcodes.tsv.gz
 14d4f657ac05179e2dfbacc5ea029dfa *inst/extdata/filtered_gene_bc_matrices/genes.tsv.gz
 11ac1abe9f1f55dd29a2759ec0856ef3 *inst/extdata/filtered_gene_bc_matrices/matrix.mtx.gz
@@ -87,6 +89,7 @@ e09552e5736127590e58dc2ef3a0b2c2 *man/gene.plot.Rd
 45e6bbf729b285672e337a235454f698 *man/gene.stats.Rd
 3a4c50b09f90b926175362cec7c4d984 *man/gg.cor.Rd
 c9f6192e85df11185ef8649c632318a3 *man/heatmap.gg.plot.Rd
+69fafd1df8f1007cd1ec3ba0c3a3865d *man/hto.anno.Rd
 184e0e7b1e0f3bbc51112412d43f8575 *man/load10x.Rd
 3d0e7a0244ba4919005fd5322a503463 *man/make.gene.model.Rd
 b94dff83dc8a2eb0c239d4b82745e1a1 *man/make.obj.Rd

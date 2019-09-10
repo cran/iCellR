@@ -18,9 +18,12 @@
 #' @export
 prep.vdj <- function (vdj.data = "data.frame", cond.name = "NULL") {
 # read VDJ data
-#  my.vdj <- read.table(vdj.data, header = TRUE, sep=",")
+  my.vdj <- vdj.data
   my.vdj <- subset(my.vdj, productive == "True")
   my.vdj <- subset(my.vdj, raw_clonotype_id != "None")
+  cell.barcodes <- my.vdj$barcode
+  cell.barcodes <- gsub("-",".",cell.barcodes)
+  my.vdj$barcode <- cell.barcodes
   mysum <- (dim(my.vdj)[1]) / 2
   myFreq <- as.data.frame(table(my.vdj$raw_clonotype_id))
   myFreq <- myFreq[order(myFreq$Freq, decreasing = TRUE),]
