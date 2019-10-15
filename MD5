@@ -1,4 +1,4 @@
-5ab552f33071aa3a49aa5d3904c1a010 *DESCRIPTION
+7142748628ceb133226f9dbb566bc56f *DESCRIPTION
 661266076cf477ca7e55b6238842271f *NAMESPACE
 6337644c5b68d77587a31f5f6c4c016b *R/F001.load10x.R
 09dc68431449d737b13334bc54856832 *R/F002.data.aggregation.R
@@ -21,7 +21,7 @@ a1c600a4f9c480fbf0dd767e6e107f52 *R/F018.run.umap.R
 3d1392a440c2757dc50640501615484d *R/F019.run.diffusion.map.R
 5f3561189072700436b7c81c0429c815 *R/F020.cluster.plot.R
 5004d21980d8a6629811aff0b2a9a0aa *R/F021.clust.avg.exp.R
-0690240543d12a93e75908ad7f4995d1 *R/F022.run.imput.R
+6ba2c31cceee64c33b29b5cd18f89908 *R/F022.run.imput.R
 32a626b0dd312e609f421144d31880e3 *R/F023.cell.gating.R
 9e95a42d0f3cea5e517093104953b26f *R/F024.gate.to.clust.R
 0cb70093e9aa38e7a2e6a3c14db7f07e *R/F025.change.clust.R
@@ -29,7 +29,7 @@ f243ec597bec0109d1dbb7411e5105a5 *R/F026.clust.rm.R
 f697331d8e00666d84c8dafe2f27c771 *R/F027.clust.stats.plot.R
 c857c2856066999f8e55ffd47ad61412 *R/F028.findMarkers.R
 ec4cd506284ecb28ca8f943d8e22cba5 *R/F029.top.markers.R
-ebbf2e9e150705521446bbd268bcc2d8 *R/F030.heatmap.gg.plot.R
+592f76538a2f931ba72cf17de9480ae8 *R/F030.heatmap.gg.plot.R
 243cb95a44dc9cfabed675a8a0e62b8f *R/F031.gene.plot.R
 31db1dfe262eb263254f493a1025b638 *R/F032.pseudotime.tree.R
 f19afc8b9a88ee6edeb198509ae7fac8 *R/F033.cell.type.pred.R
@@ -89,7 +89,7 @@ df5d432802765166c5752af3831547c6 *man/gate.to.clust.Rd
 1f93a1c3a750b2ba37fdb826a5bb723b *man/gene.plot.Rd
 45e6bbf729b285672e337a235454f698 *man/gene.stats.Rd
 3a4c50b09f90b926175362cec7c4d984 *man/gg.cor.Rd
-c9f6192e85df11185ef8649c632318a3 *man/heatmap.gg.plot.Rd
+fb6779cce4610b121344b27c3f78e87b *man/heatmap.gg.plot.Rd
 69fafd1df8f1007cd1ec3ba0c3a3865d *man/hto.anno.Rd
 184e0e7b1e0f3bbc51112412d43f8575 *man/load10x.Rd
 3d0e7a0244ba4919005fd5322a503463 *man/make.gene.model.Rd
@@ -106,7 +106,7 @@ c84f02aabd99787440a356d699da2809 *man/pseudotime.tree.Rd
 2ca0459e872816e421b9e7750425b704 *man/run.clustering.Rd
 70e11771569a233b9e6d2abc4318da6c *man/run.diff.exp.Rd
 71c6ab70deee7c21f1805adeda444f4f *man/run.diffusion.map.Rd
-aac99e4fd79c5877c99335dba77c5af2 *man/run.impute.Rd
+dbfeb917c5778ba087b7db80b789975a *man/run.impute.Rd
 e0b0cb47c4a9becb11f36d85fd5f65d7 *man/run.pc.tsne.Rd
 4dc8487ac81b3dc5aeb75c6b4fdd137b *man/run.pca.Rd
 b281286cef46947d2861a111351ef40c *man/run.phenograph.Rd
