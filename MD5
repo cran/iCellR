@@ -1,5 +1,5 @@
-7142748628ceb133226f9dbb566bc56f *DESCRIPTION
-661266076cf477ca7e55b6238842271f *NAMESPACE
+2c489f40e33e3ea40aa4dd655b13e39c *DESCRIPTION
+a79437c598d2103c6cf0943979bc03e0 *NAMESPACE
 6337644c5b68d77587a31f5f6c4c016b *R/F001.load10x.R
 09dc68431449d737b13334bc54856832 *R/F002.data.aggregation.R
 7b94d4d5e0335b2f20e655ae17957dd6 *R/F003.make.obj.R
@@ -17,9 +17,9 @@ a3cf5d6f07c27afc43e1fef28a145a09 *R/F014.find.dim.genes.R
 7bcb0c988aa50a6bde55348bf3717d3b *R/F015.run.clustering.R
 46b93651735c21b7837929aaf9b78317 *R/F016.clust.cond.info.R
 05e475703b371b31836f051e9f734944 *R/F017.run.pc.tsne.R
-a1c600a4f9c480fbf0dd767e6e107f52 *R/F018.run.umap.R
+218a3f98b450fbda4a96c09974fcc15a *R/F018.run.umap.R
 3d1392a440c2757dc50640501615484d *R/F019.run.diffusion.map.R
-5f3561189072700436b7c81c0429c815 *R/F020.cluster.plot.R
+8dc94e37d923b0ebc92b4c953f771cf8 *R/F020.cluster.plot.R
 5004d21980d8a6629811aff0b2a9a0aa *R/F021.clust.avg.exp.R
 6ba2c31cceee64c33b29b5cd18f89908 *R/F022.run.imput.R
 32a626b0dd312e609f421144d31880e3 *R/F023.cell.gating.R
@@ -30,7 +30,7 @@ f697331d8e00666d84c8dafe2f27c771 *R/F027.clust.stats.plot.R
 c857c2856066999f8e55ffd47ad61412 *R/F028.findMarkers.R
 ec4cd506284ecb28ca8f943d8e22cba5 *R/F029.top.markers.R
 592f76538a2f931ba72cf17de9480ae8 *R/F030.heatmap.gg.plot.R
-243cb95a44dc9cfabed675a8a0e62b8f *R/F031.gene.plot.R
+9bcceb186e586125926da8b28d87cdbd *R/F031.gene.plot.R
 31db1dfe262eb263254f493a1025b638 *R/F032.pseudotime.tree.R
 f19afc8b9a88ee6edeb198509ae7fac8 *R/F033.cell.type.pred.R
 2f8e81fb8b557c762ff980768935736e *R/F034.diff.exp.R
@@ -49,11 +49,12 @@ e215614562f811fe186e8c2f180256eb *R/F045.cc.R
 14d8e5431ff5482a15bf5c1ea248ec7e *R/data.demo.obj.R
 01ec88c6093c3b29cb7c8b3c4716da7f *R/data.g2m.R
 dd5e58c24f25bd635a62d7e8a29ef833 *R/gg.cor.R
-4b7ca0516bb24f9aaeb025fea702869a *R/globalVariables.R
+07b294ae2ab197c89497c7ada1cc3ce3 *R/globalVariables.R
 39d2d3a8235487fca3121865164ee241 *R/hto.anno.R
 e810b98bdf4c5d6566a944eb870c1d45 *R/k.myImp.R
 802b6da6047ce7943c2a1cfbd06f4f6e *R/k.pseudotime.R
 9f1a94eabef3063adc12b7711979106d *R/k.run.cca.R
+2aa77d5c35e74b932f825388ae9a133a *R/run.mnn.R
 a0b9342ab35cc412f83a0d29d8f9273b *R/run.phenograph.r
 09f2a4653eb9fdfc69012b498d692a79 *data/demo.obj.rda
 c8626f6a332dff8b9b29c2b8e24352aa *data/g2m.phase.rda
@@ -107,6 +108,7 @@ c84f02aabd99787440a356d699da2809 *man/pseudotime.tree.Rd
 70e11771569a233b9e6d2abc4318da6c *man/run.diff.exp.Rd
 71c6ab70deee7c21f1805adeda444f4f *man/run.diffusion.map.Rd
 dbfeb917c5778ba087b7db80b789975a *man/run.impute.Rd
+d101496c7d5ac46caa40083ee205bd4c *man/run.mnn.Rd
 e0b0cb47c4a9becb11f36d85fd5f65d7 *man/run.pc.tsne.Rd
 4dc8487ac81b3dc5aeb75c6b4fdd137b *man/run.pca.Rd
 b281286cef46947d2861a111351ef40c *man/run.phenograph.Rd
