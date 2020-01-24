@@ -6,12 +6,6 @@
 #' @param my.out.put Chose from "data" or "plot", default = "data".
 #' @param normalize.ncell If TRUE the values will be normalized to the number of cells by downsampling.
 #' @return An object of class iCellR.
-#' @examples
-#' clust.cond.info(demo.obj, plot.type = "pie", normalize.ncell = TRUE, my.out.put = "data")
-#'
-#' head(demo.obj@my.freq)
-#'
-#' clust.cond.info(demo.obj, plot.type = "pie", normalize.ncell = TRUE, my.out.put = "plot")
 #' @export
 clust.cond.info <- function (x = NULL,
                              plot.type = "pie",
