@@ -1,11 +1,11 @@
 Package: iCellR
 Type: Package
 Title: Analyzing High-Throughput Single Cell Sequencing Data
-Version: 1.4.0
+Version: 1.4.5
 Authors@R: c(
   person(given = 'Alireza', family = 'Khodadadi-Jamayran',role = c('aut','cre'), email = 'alireza.khodadadi.j@gmail.com', comment = c(ORCID = '0000-0003-2495-7504')),
   person(given = 'Joseph', family = 'Pucella',role = c('aut','ctb'), comment = c(ORCID = '0000-0003-0875-8046')),
-  person(given = 'Hua', family = 'Zhou',role = c('aut','ctb')),
+  person(given = 'Hua', family = 'Zhou',role = c('aut','ctb'), comment = c(ORCID = '0000-0003-1822-1306')),
   person(given = 'Nicole', family = 'Doudican',role = c('aut','ctb'), comment = c(ORCID = '0000-0003-3827-9644')),
   person(given = 'John', family = 'Carucci',role = c('aut','ctb'), comment = c(ORCID = '0000-0001-6817-9439')),
   person(given = 'Adriana', family = 'Heguy',role = c('aut','ctb')),
@@ -18,7 +18,7 @@ Depends: R (>= 3.3.0), ggplot2, plotly
 Imports: Matrix, Rtsne, gridExtra, ggrepel, ggpubr, scatterplot3d,
         RColorBrewer, knitr, NbClust, shiny, pheatmap, ape, ggdendro,
         plyr, reshape, Hmisc, htmlwidgets, methods, uwot, hdf5r,
-        progress
+        progress, igraph
 License: GPL-2
 Encoding: UTF-8
 LazyData: true
@@ -26,11 +26,11 @@ RoxygenNote: 7.0.2
 BugReports: https://github.com/rezakj/iCellR/issues
 URL: https://github.com/rezakj/iCellR
 NeedsCompilation: no
-Packaged: 2020-04-02 15:03:18 UTC; khodaa01
+Packaged: 2020-04-10 00:51:36 UTC; khodaa01
 Author: Alireza Khodadadi-Jamayran [aut, cre]
     (<https://orcid.org/0000-0003-2495-7504>),
   Joseph Pucella [aut, ctb] (<https://orcid.org/0000-0003-0875-8046>),
-  Hua Zhou [aut, ctb],
+  Hua Zhou [aut, ctb] (<https://orcid.org/0000-0003-1822-1306>),
   Nicole Doudican [aut, ctb] (<https://orcid.org/0000-0003-3827-9644>),
   John Carucci [aut, ctb] (<https://orcid.org/0000-0001-6817-9439>),
   Adriana Heguy [aut, ctb],
@@ -38,4 +38,4 @@ Author: Alireza Khodadadi-Jamayran [aut, cre]
   Aristotelis Tsirigos [aut, ctb]
     (<https://orcid.org/0000-0002-7512-8477>)
 Repository: CRAN
-Date/Publication: 2020-04-03 14:10:26 UTC
+Date/Publication: 2020-04-10 07:20:03 UTC
