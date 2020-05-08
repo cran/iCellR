@@ -101,7 +101,7 @@ if (do == 2) {
 # scatter plots
   if (col.legend[1] == ".") {
     Mito.UMIs <- ggplot(DATA,aes(y=mito.percent,x=UMIs,
-                                 text = paste("UMIs =",DATA$UMIs,",",DATA$CellIds,sep=" "))) +
+                                 text = paste("UMIs =",UMIs,",",CellIds,sep=" "))) +
       geom_point(color = cell.color, size = cell.size, alpha = cell.transparency) +
       scale_x_continuous(trans = "log1p") +
       scale_color_discrete(name="") +
@@ -110,7 +110,7 @@ if (do == 2) {
             legend.key = element_rect(fill = back.col)) + theme_bw()
     #
     Genes.UMIs <- ggplot(DATA,aes(y=nGenes,x=UMIs,
-                                  text = paste("nGenes =",DATA$nGenes,",",DATA$CellIds,sep=" "))) +
+                                  text = paste("nGenes =",nGenes,",",CellIds,sep=" "))) +
       geom_point(color = cell.color, size = cell.size, alpha = cell.transparency) +
       scale_x_continuous(trans = "log1p") +
       scale_y_continuous(trans = "log1p") +
@@ -120,7 +120,7 @@ if (do == 2) {
             legend.key = element_rect(fill = back.col)) + theme_bw()
   } else {
     Mito.UMIs <- ggplot(DATA,aes(y=mito.percent,x=UMIs, col = col.legend,
-                                 text = paste("UMIs =",DATA$UMIs,",",DATA$CellIds,sep=" "))) +
+                                 text = paste("UMIs =",UMIs,",",CellIds,sep=" "))) +
       geom_point( size = cell.size, alpha = cell.transparency) +
       scale_x_continuous(trans = "log1p") +
       scale_color_discrete(name="") +
@@ -129,7 +129,7 @@ if (do == 2) {
             legend.key = element_rect(fill = back.col)) + theme_bw()
     #
     Genes.UMIs <- ggplot(DATA,aes(y=nGenes,x=UMIs, col = col.legend,
-                                  text = paste("nGenes =",DATA$nGenes,",",DATA$CellIds,sep=" "))) +
+                                  text = paste("nGenes =",nGenes,",",CellIds,sep=" "))) +
       geom_point(size = cell.size, alpha = cell.transparency) +
       scale_x_continuous(trans = "log1p") +
       scale_y_continuous(trans = "log1p") +
