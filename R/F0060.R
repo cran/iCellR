@@ -3,7 +3,7 @@
 #' This function takes an object of class iCellR and finds optimal number of clusters and clusters the data.
 #' @param x An object of class iCellR.
 #' @param dist.method the distance measure to be used to compute the dissimilarity matrix. This must be one of: "euclidean", "maximum", "mandatattan", "canberra", "binary", "minkowski" or "NULL". By default, distance="euclidean". If the distance is "NULL", the dissimilarity matrix (diss) should be given by the user. If distance is not "NULL", the dissimilarity matrix should be "NULL".
-#' @param k KNN the higher the number the less sensitivity, default = 100.
+#' @param sensitivity The higher the number the less sensitivity, default = 100.
 #' @param data.type Choose between "tsne", "pca", "umap", default = "pca".
 #' @param dims PCA dimentions to be use for clustering, default = 1:10.
 #' @param return.graph return igraph object, default = FALSE.
@@ -13,7 +13,7 @@
 #' @export
 iclust <- function (x = NULL,
                       dist.method = "euclidean",
-                      k = 100,
+                      sensitivity = 100,
                       data.type = "pca",
                       dims = 1:10,
                       return.graph = FALSE) {
@@ -43,6 +43,7 @@ iclust <- function (x = NULL,
 message(paste("   Calculating", dist.method,"distance ..."))
 My.distances = as.matrix(dist(t(DATA),dist.method))
 #####
+k = sensitivity
 ncells=dim(DATA)[2]
 cell.num = k
 #####

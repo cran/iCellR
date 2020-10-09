@@ -7,13 +7,16 @@
 clono.plot(
   x = NULL,
   plot.data.type = "tsne",
-  clono = 1,
+  clonotype.column = 1,
+  barcode.column = 2,
+  clono = NULL,
+  conds.to.plot = NULL,
   clust.dim = 2,
   cell.size = 1,
   cell.colors = c("red", "gray"),
   box.cell.col = "black",
   back.col = "white",
-  cell.transparency = 0.5,
+  cell.transparency = 1,
   interactive = TRUE,
   out.name = "plot"
 )
@@ -23,7 +26,13 @@ clono.plot(
 
 \item{plot.data.type}{Choose from "tsne" and "pca", default = "tsne".}
 
-\item{clono}{A clonotype name to be plotted, default = 1.}
+\item{clonotype.column}{The column which has the clonotype IDs, default =  2.}
+
+\item{barcode.column}{The column which has the barcode IDs, default = 1.}
+
+\item{clono}{A clonotype name to be plotted, default = NULL.}
+
+\item{conds.to.plot}{Choose one condition you want to see in the plot, default = NULL (all conditions).}
 
 \item{clust.dim}{2 for 2D plots and 3 for 3D plots, default =  2.}
 

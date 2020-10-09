@@ -5,7 +5,7 @@
 #' @param imp.method Choose between "iCellR.imp" and "magic", defualt = "iCellR.imp".
 #' @param nn Number of neighboring cells to find, default = 10.
 #' @param dims PC dimentions to be used for the analysis, default = 10.
-#' @param data.type Choose between "tsne", "pca", "umap", "diffusion", default = "pca".
+#' @param data.type Choose between "tsne", "pca", "umap", "diffusion", "knetl", default = "pca".
 #' @param genes character or integer vector, default: NULL vector of column names or column indices for which to return smoothed data If 'all_genes' or NULL, the entire smoothed matrix is returned
 #' @param k if imp.method is magic; int, optional, default: 10 number of nearest neighbors on which to build kernel
 #' @param alpha if imp.method is magic; int, optional, default: 15 sets decay rate of kernel tails. If NULL, alpha decaying kernel is not used
@@ -51,6 +51,9 @@ run.impute <- function (x = NULL,
     }
     if(data.type == "tsne") {
       my.data.my.pca = t(x@tsne.data)
+    }
+    if(data.type == "knetl") {
+      my.data.my.pca = t(x@knetl.data)
     }
     if(data.type == "diffusion") {
       my.data.my.pca = t(x@diffusion.data)

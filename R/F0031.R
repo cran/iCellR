@@ -25,6 +25,7 @@
 #' @param box.transparency Color transparency for box in "boxplot", default = 0.5.
 #' @param interactive If set to TRUE an interactive HTML file will be created, default = TRUE.
 #' @param out.name If "interactive" is set to TRUE, the out put name for HTML, default = "plot".
+#' @param write.data Write export the data used for the plot plot, default = TFALSE.
 #' @return An object of class iCellR.
 #' @examples
 #' gene.plot(demo.obj, gene = "CD74",interactive = FALSE)
@@ -53,7 +54,7 @@
 #' @importFrom ggplot2 ggplot geom_segment geom_violin guide_colorbar guide_legend guides scale_color_discrete scale_colour_gradient scale_fill_gradient2 scale_x_continuous scale_y_continuous scale_y_discrete stat_summary coord_polar element_rect element_text element_blank facet_wrap scale_color_manual geom_hline geom_jitter geom_vline ylab xlab ggtitle theme_bw aes theme geom_bar geom_point geom_boxplot geom_errorbar position_dodge geom_tile geom_density geom_line
 #' @export
 gene.plot <- function (x = NULL,
-                       gene = "NULL",
+                       gene = NULL,
                        cond.shape = FALSE,
                        conds.to.plot = NULL,
                        data.type = "main",
@@ -75,15 +76,10 @@ gene.plot <- function (x = NULL,
                        cell.transparency = 1,
                        box.transparency = 0.5,
                        interactive = TRUE,
-                       out.name = "plot") {
+                       out.name = "plot",
+                       write.data = FALSE) {
   if ("iCellR" != class(x)[1]) {
     stop("x should be an object of class iCellR")
-  }
-  if (gene == "NULL") {
-    stop("There is no gene name provided. Please provide a gene name")
-  }
-  if (length(gene) != 1) {
-    stop("currently you can only plot one gene at a time")
   }
   ## get main data
   if (data.type == "main") {
@@ -92,15 +88,32 @@ gene.plot <- function (x = NULL,
   if (data.type == "imputed") {
     DATAmain <- x@imputed.data
   }
-  AllGenes = row.names(DATAmain)
-  gene.availability = gene %in% AllGenes
-  if(gene.availability != TRUE)
-  {
-    ToPrint <- paste(gene, "gene is not available in your data.
-     See all gene names: row.names(YOURobject@main.data)", sep=" ")
-    stop(message(ToPrint))
-
+  ##########
+  #######
+  if (is.null(gene)) {
+    stop("There is no gene name provided. Please provide gene/genes to plot")
   }
+  AllGenes = row.names(DATAmain)
+  absent = which((gene %in% AllGenes) == FALSE)
+  absentgenes = gene[absent]
+  gene <- setdiff(gene,absentgenes)
+  #####
+  if(length(absentgenes) != 0)
+  {
+    absentgenes = paste(absentgenes, collapse=",")
+    ToPrint <- paste("WARNING:",absentgenes, "not available in your data", sep=" ")
+    message(ToPrint)
+    presentgenes = paste(gene, collapse=",")
+    ToPrint2 <- paste("WARNING:","plotting",presentgenes, sep=" ")
+    message(ToPrint2)
+  }
+  # get the gene from the main data
+  sub.data <- subset(DATAmain,rownames(DATAmain) %in% gene)
+  data.t <- t(sub.data)
+  if(1 < dim(data.t)[2]) {
+    data.t <- rowSums(data.t)
+  }
+  data.expr <- as.data.frame(data.t)
   ##### get cluster data
   # 2 dimentions
   if (clust.dim == 2) {
@@ -144,6 +157,15 @@ gene.plot <- function (x = NULL,
       DATA <- x@diffusion.data
     }
   }
+  ########
+  if(length(gene) == 1) {
+    MyTitle <- paste(MyTitle,"for (",gene,")")
+    geneNAME <- gene
+  }
+  if(length(gene) > 1){
+    MyTitle <- paste(MyTitle,"for (multiple genes)")
+    geneNAME <- "multiple genes"
+  }
   # conditions
   if (col.by == "conditions") {
     col.legend <- data.frame(do.call('rbind', strsplit(as.character(rownames(DATA)),'_',fixed=TRUE)))[1]
@@ -161,10 +183,6 @@ gene.plot <- function (x = NULL,
       #      col.legend.box <- factor(col.legend.box$clusters)
     }
   }
-  # get the gene from the main data
-  sub.data <- subset(DATAmain,rownames(DATAmain) == gene)
-  data.t <- t(sub.data)
-  data.expr <- as.data.frame(data.t)
   ###### make binary
   #  data.binary <- data.t > 0
   #  data.binary <- as.data.frame(data.binary)
@@ -232,7 +250,7 @@ gene.plot <- function (x = NULL,
           scale_colour_gradient(low = cell.colors[1], high = cell.colors[2], name="") +
           xlab("Dim1") +
           ylab("Dim2") +
-          ggtitle(paste(MyTitle,"for (",gene,")")) +
+          ggtitle(MyTitle) +
           theme(panel.background = element_rect(fill = back.col, colour = "black"),
                 panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                 legend.key = element_rect(fill = back.col))
@@ -244,7 +262,7 @@ gene.plot <- function (x = NULL,
           scale_colour_gradient(low = cell.colors[1], high = cell.colors[2], name="") +
           xlab("Dim1") +
           ylab("Dim2") +
-          ggtitle(paste(MyTitle,"for (",gene,")")) +
+          ggtitle(MyTitle) +
           theme(panel.background = element_rect(fill = back.col, colour = "black"),
                 panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
                 legend.key = element_rect(fill = back.col))
@@ -283,7 +301,7 @@ gene.plot <- function (x = NULL,
       myPLOT <- ggplot(DATA, aes(x = Clusters, y=log2(Expression + 1))) +
         theme_bw() + theme(axis.text.x=element_text(angle=90)) +
         geom_jitter(height = 0,color = box.cell.col, size = cell.size, alpha = cell.transparency) +
-        ggtitle(gene) +
+        ggtitle(geneNAME) +
         geom_violin(trim=TRUE, col = "black", alpha = cell.transparency) +
         geom_boxplot(fill = box.color,
                      col = "green",
@@ -299,7 +317,7 @@ gene.plot <- function (x = NULL,
       myPLOT <- ggplot(DATA, aes(x = Clusters, y=log2(Expression + 1))) +
         theme_bw() + theme(axis.text.x=element_text(angle=90)) +
         geom_jitter(height = 0,color = box.cell.col, size = cell.size, alpha = cell.transparency) +
-        ggtitle(gene) +
+        ggtitle(geneNAME) +
         geom_violin(trim=TRUE, col = "black", alpha = cell.transparency) +
         geom_boxplot(fill = box.color,
                      col = "green",
@@ -312,8 +330,16 @@ gene.plot <- function (x = NULL,
       myPLOT <- myPLOT + facet_wrap(~ Conditions)
     }
     # add p-val
+    if(length(gene) > 1){
+      box.to.test = 1
+    }
     if (box.to.test == 0) {
-      if (dim(x@clust.avg)[1] != 0) {
+      if (dim(x@clust.avg)[1] == 0) {
+        box.to.test = 1
+      }
+    }
+    if (box.to.test == 0) {
+            if (dim(x@clust.avg)[1] != 0) {
         AvData <- x@clust.avg
         row.names(AvData) <- AvData$gene
         AvData <- AvData[,-1]
@@ -322,11 +348,6 @@ gene.plot <- function (x = NULL,
       }
     }
     ##########
-    if (box.to.test == 0) {
-      if (dim(x@clust.avg)[1] == 0) {
-        box.to.test = 1
-      }
-    }
     ############
     if (box.pval == "sig.signs") {
       myPLOT <- myPLOT + stat_compare_means(label = "p.signif", ref.group = box.to.test)
@@ -357,12 +378,12 @@ gene.plot <- function (x = NULL,
         geom_errorbar(aes(ymin=Expression, ymax=Expression+sd), width=.2,
                       position=position_dodge(.9)) +
         stat_summary(fun="mean",
-                     geom="bar",
+                     geom="bar",color="black",
                      alpha = cell.transparency,
                      show.legend = FALSE) +
         ylab("avraged normalized expression") +
         xlab(".") +
-        ggtitle(gene) +
+        ggtitle(geneNAME) +
         theme_bw() + theme(axis.text.x=element_text(angle=90))
     }
     if (cond.shape == TRUE) {
@@ -372,20 +393,47 @@ gene.plot <- function (x = NULL,
         geom_errorbar(aes(ymin=Expression, ymax=Expression+sd), width=.2,
                       position=position_dodge(.9)) +
         stat_summary(fun="mean",
-                     geom="bar",
+                     geom="bar",color="black",
                      alpha = cell.transparency,
                      show.legend = FALSE) +
         ylab("avraged normalized expression") +
         xlab(".") +
-        ggtitle(gene) +
+        ggtitle(geneNAME) +
         theme_bw() + theme(axis.text.x=element_text(angle=90)) + facet_wrap(~ Conditions)
     }
   }
+  ########
+  if (plot.type == "violin") {
+    if (cond.shape == FALSE) {
+      myPLOT <- ggplot(DATA,
+        aes(x = Clusters, y=log2(Expression + 1))) +
+        theme_classic() + theme(axis.text.x=element_text(angle=90)) +
+        ggtitle(geneNAME) +
+        geom_violin(trim=TRUE, col = "black", alpha = cell.transparency) +
+        ylab("scaled normalized expression") +
+        xlab(".")
+    }
+    if (cond.shape == TRUE) {
+      myPLOT <- ggplot(DATA,
+        aes(x = Clusters, y=log2(Expression + 1), fill=Conditions)) +
+        theme_classic() + theme(axis.text.x=element_text(angle=90)) +
+        ggtitle(geneNAME) +
+        geom_violin(trim=TRUE, col = "black", alpha = cell.transparency) +
+        ylab("scaled normalized expression") +
+        xlab(".")
+    }
+  }
   # return
+if (write.data == TRUE) {
+ write.table(DATA,paste(geneNAME,".tsv",sep=""),
+             row.names = TRUE,quote = FALSE,sep="\t")
+}
+if (write.data == FALSE) {
   if (interactive == TRUE) {
     OUT.PUT <- paste(out.name, ".html", sep="")
     htmlwidgets::saveWidget(ggplotly(myPLOT), OUT.PUT)
   } else {
     return(myPLOT)
+   }
   }
 }

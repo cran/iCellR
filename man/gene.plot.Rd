@@ -6,7 +6,7 @@
 \usage{
 gene.plot(
   x = NULL,
-  gene = "NULL",
+  gene = NULL,
   cond.shape = FALSE,
   conds.to.plot = NULL,
   data.type = "main",
@@ -28,7 +28,8 @@ gene.plot(
   cell.transparency = 1,
   box.transparency = 0.5,
   interactive = TRUE,
-  out.name = "plot"
+  out.name = "plot",
+  write.data = FALSE
 )
 }
 \arguments{
@@ -79,6 +80,8 @@ gene.plot(
 \item{interactive}{If set to TRUE an interactive HTML file will be created, default = TRUE.}
 
 \item{out.name}{If "interactive" is set to TRUE, the out put name for HTML, default = "plot".}
+
+\item{write.data}{Write export the data used for the plot plot, default = TFALSE.}
 }
 \value{
 An object of class iCellR.

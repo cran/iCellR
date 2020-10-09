@@ -7,7 +7,7 @@
 iclust(
   x = NULL,
   dist.method = "euclidean",
-  k = 100,
+  sensitivity = 100,
   data.type = "pca",
   dims = 1:10,
   return.graph = FALSE
@@ -18,7 +18,7 @@ iclust(
 
 \item{dist.method}{the distance measure to be used to compute the dissimilarity matrix. This must be one of: "euclidean", "maximum", "mandatattan", "canberra", "binary", "minkowski" or "NULL". By default, distance="euclidean". If the distance is "NULL", the dissimilarity matrix (diss) should be given by the user. If distance is not "NULL", the dissimilarity matrix should be "NULL".}
 
-\item{k}{KNN the higher the number the less sensitivity, default = 100.}
+\item{sensitivity}{The higher the number the less sensitivity, default = 100.}
 
 \item{data.type}{Choose between "tsne", "pca", "umap", default = "pca".}
 

@@ -32,7 +32,7 @@ run.impute(
 
 \item{nn}{Number of neighboring cells to find, default = 10.}
 
-\item{data.type}{Choose between "tsne", "pca", "umap", "diffusion", default = "pca".}
+\item{data.type}{Choose between "tsne", "pca", "umap", "diffusion", "knetl", default = "pca".}
 
 \item{genes}{character or integer vector, default: NULL vector of column names or column indices for which to return smoothed data If 'all_genes' or NULL, the entire smoothed matrix is returned}
 
