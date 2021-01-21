@@ -72,8 +72,19 @@ clust.avg.exp <- function (x = NULL,
 #
 #  MeanExpForClusters <- multmerge()
 #  file.remove(list.files(pattern="meanExp"))
-   MeanExpForClusters <- MeanExpForClusters[order(nchar(colnames(MeanExpForClusters)),colnames(MeanExpForClusters))]
-   attributes(x)$clust.avg <- MeanExpForClusters
+   MyMat <- as.matrix(MeanExpForClusters)
+   NameS <- colnames(MeanExpForClusters)
+   MeanExpForClusters <- MyMat[,order(nchar(NameS),NameS)]
+   MeanExpForClusters <-as.data.frame(MeanExpForClusters)
+   ##############
+   data <- MeanExpForClusters
+   row.names(data) <- data$gene
+   data <- data[,-1]
+   data = as.data.frame(sapply(data, as.numeric))
+   data <- round(data,digits=4)
+   data <- cbind(gene=MeanExpForClusters$gene,data)
+#   MeanExpForClusters <- MeanExpForClusters[order(nchar(colnames(MeanExpForClusters)),colnames(MeanExpForClusters))]
+      attributes(x)$clust.avg <- data
    message("All done!")
   return(x)
 }

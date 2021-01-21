@@ -36,7 +36,9 @@ clust.ord <- function (x = NULL,
   data <- x@clust.avg
   row.names(data) <- data$gene
   data <- data[,-1]
-  data <- data[ order(rowMeans(data), decreasing = TRUE), ]
+#####
+  dataMat <- as.matrix(data)
+  data <- dataMat[ order(rowMeans(dataMat), decreasing = TRUE), ]
   data <- head(data,top.rank)
   data <- dist(scale(t(data)), method = dist.method)
   hc <- hclust(data, method = clust.method)

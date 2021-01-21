@@ -124,20 +124,6 @@ clono.plot <- function (x = NULL,
      DATA2 <- subset(DATA, !rownames(DATA) %in% colono$barcode)
      DATA2$MyCol <- cell.colors[2]
      DATA <- rbind(DATA2,DATA1)
-     #####
-#      colonoData <- merge(DATA,colono, by="row.names", all.x=TRUE, all.y=FALSE)
-##############
-#      colonoData$Clonotypes <- gsub(" ", "", colonoData$Clonotypes)
-#      colonoData$Clonotypes[!is.na(colonoData$Clonotypes)] <- "red"
-#      colonoData$Clonotypes[is.na(colonoData$Clonotypes)] <- "gray"
-#      colonoData$Clonotypes[colonoData$Clonotypes != clono] <- "NA"
-#      colonoData$Clonotypes[colonoData$Clonotypes == clono] <- clono
-############
-#      DATA <- colonoData
-#      row.names(DATA) <- DATA$Row.names
-#      DATA <- DATA[,-1]
-#      DATA <- (DATA[order(DATA$Clonotypes, decreasing = TRUE),])
-#      clonotype <- factor(DATA$Clonotypes)
 #############
      MyCol <- factor(DATA$MyCol)
     # plot 2d

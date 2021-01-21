@@ -29,36 +29,14 @@ norm.data <- function (x = NULL,
     normalized <- as.data.frame(sweep(dataMat, 2, norm.facts, `/`))
   }
   if (norm.method == "ranked.glsf") {
-    raw.data.order <- DATA[ order(rowMeans(DATA), decreasing = T), ]
+    dataMat <- as.matrix(DATA)
+    raw.data.order <- dataMat[ order(rowMeans(dataMat), decreasing = TRUE), ]
     topGenes = head(raw.data.order,top.rank)
     libSiz <- colSums(topGenes)
     norm.facts <- as.numeric(libSiz) / mean(as.numeric(libSiz))
-    dataMat <- as.matrix(DATA)
     normalized <- as.data.frame(sweep(dataMat, 2, norm.facts, `/`))
   }
-#  if (norm.method == "deseq") {
-#    require(DESeq)
-#    CondAnum <- length(colnames(DATA)) - 1
-#    conds <- factor( c( rep("CondA", CondAnum) , rep("CondB", 1)))
-#    cds <- newCountDataSet(DATA, conds )
-#    cds <- estimateSizeFactors( cds )
-#    norm.facts <- as.numeric(sizeFactors(cds))
-#    normalized <- as.data.frame(counts(cds,normalized=TRUE))
-#  }
-#  if (norm.method == "ranked.deseq") {
-#    require(DESeq)
-#    raw.data.order <- DATA[ order(rowMeans(DATA), decreasing = T), ]
-#    CondAnum <- length(colnames(DATA)) - 1
-#    conds <- factor( c( rep("CondA", CondAnum) , rep("CondB", 1)))
-#    cds <- newCountDataSet(raw.data.order, conds )
-#    cds <- estimateSizeFactors( cds )
-#    norm.facts <- as.numeric(sizeFactors(cds))
-#    cds1 <- newCountDataSet(DATA, conds)
-#    sizeFactors(cds1) = sizeFactors(cds)
-#    rm("cds")
-#    normalized <- as.data.frame(counts(cds1, normalized=TRUE))
-#    rm("cds1")
-#  }
+#######################
   if (norm.method == "spike.in") {
     norm.facts <- spike.in.factors
     norm.facts <- as.numeric(norm.facts)
@@ -77,10 +55,7 @@ norm.data <- function (x = NULL,
     dataMat <- as.matrix(DATA)
     normalized <- as.data.frame(sweep(dataMat, 2, norm.facts, `/`))
   }
-#  SizeFactors <- as.numeric(norm.facts)
-#  names(SizeFactors) <- c(colnames(DATA))
-#  SizeFactors <- as.data.frame(SizeFactors)
-#  normalized[is.na(normalized)] <- 0
+#####
   normalized <- round(normalized, digits = 3)
   attributes(x)$main.data <- normalized
   attributes(x)$norm.factors <- norm.facts

@@ -48,7 +48,9 @@ run.mnn <- function (x = NULL,
   }
   ####
   if (method == "base.mean.rank") {
-    raw.data.order <- DATA[ order(rowMeans(DATA), decreasing = TRUE), ]
+    dataMat <- as.matrix(DATA)
+    raw.data.order <- dataMat[ order(rowMeans(dataMat), decreasing = TRUE), ]
+    raw.data.order <- as.data.frame(raw.data.order)
     DATA <- head(raw.data.order,top.rank)
   }
   # gene model
@@ -120,7 +122,9 @@ run.mnn <- function (x = NULL,
   #### Col Names order
   BestOrder <- colnames(DATA)
 #### order colnames by the original data
-  MNN <- MNN[ , order(match(names(MNN),BestOrder))]
+  MNN <- as.matrix(MNN)
+  MNN <- MNN[ , order(match(colnames(MNN),BestOrder))]
+  MNN <- as.data.frame(MNN)
   ### PCA
   message(" Running PCA ...")
   counts.pca <- prcomp((MNN), center = TRUE, scale. = FALSE)

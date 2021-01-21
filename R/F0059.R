@@ -125,7 +125,9 @@ iba <- function (x = NULL,
 #  data.sum1 <- round(data.sum1, digits = 3)
   #### order samples (order colnames by the original data)
   BestOrder <- colnames(DATA)
-  data.sum1 <- data.sum1[ , order(match(names(data.sum1),BestOrder))]
+  data.sum1 <- as.matrix(data.sum1)
+  data.sum1 <- data.sum1[ , order(match(colnames(data.sum1),BestOrder))]
+  data.sum1 <- as.data.frame(data.sum1)
   ########
   attributes(x)$imputed.data <- data.sum1
   start_time <- Sys.time()

@@ -91,10 +91,9 @@ heatmap.gg.plot <- function (x = NULL,
  ############
   ## order by cluster
   if (cluster.by == "clusters") {
-#  MYord <- (MYord[order(MYord$Row, decreasing = F),])
-  MYord <- (MYord[order(MYord$clusters, decreasing = FALSE),])
+  ######################################
   clustOrd <- unique(MYord$clusters)
-  z = as.data.frame(MYord$clusters)
+    z = as.data.frame(MYord$clusters)
   # make break lines
   for(i in 1:length(clustOrd)) {
     NameCol=paste("cluster",i,sep="_")
@@ -127,7 +126,10 @@ heatmap.gg.plot <- function (x = NULL,
     My.distances = as.data.frame(as.matrix(dist(t(my.data.my.pca))))[1]
     colnames(My.distances) <- "MyDist"
     My.distances$MyIDs <- row.names(My.distances)
-    My.distances <- row.names(My.distances[order(My.distances$MyDist, decreasing = T),])
+##########
+    DistOrd <- My.distances$MyDist
+    DistMat <- as.matrix(My.distances)
+    My.distances <- row.names(DistMat[order(DistOrd, decreasing = T),])
   }
 ##########
   data.t <- t(sub.data)
@@ -212,7 +214,12 @@ heatmap.gg.plot <- function (x = NULL,
   }
   data <- cbind(Myord = row.names(data), data)
   mrgd <- merge(data, clusters, by="cell")
-  mrgd <- (mrgd[order(as.numeric(as.character(mrgd$Myord)), decreasing = TRUE),])
+#
+  MyOrd <- as.numeric(as.character(mrgd$Myord))
+  mrgd <- as.matrix(mrgd)
+  mrgd <- (mrgd[order(MyOrd, decreasing = TRUE),])
+  mrgd <- as.data.frame(mrgd)
+  ######
   data <- mrgd
   data$gene <- factor(data$gene, levels = rev(gene))
   data$cell <- factor(data$cell, levels = MYord)
@@ -220,6 +227,8 @@ heatmap.gg.plot <- function (x = NULL,
     data$cell <- factor(data$cell, levels = My.distances)
   }
   ### plot
+  data$expression <- as.numeric(data$expression)
+  #############
   heatmap <- ggplot(data, aes(x = cell, y = gene, fill = expression, text=clusters)) + geom_tile() +
     scale_fill_gradient2(low = col.low, mid = col.mid, high = col.high, name = "",
     guide = guide_colorbar(direction = "vertical", title.position = "left")) +

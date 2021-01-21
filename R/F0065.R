@@ -69,7 +69,9 @@ run.anchor <- function (x = NULL,
   }
   ####
   if (method == "base.mean.rank") {
-    raw.data.order <- DATA[ order(rowMeans(DATA), decreasing = TRUE), ]
+    dataMat <- as.matrix(DATA)
+    raw.data.order <- dataMat[ order(rowMeans(dataMat), decreasing = TRUE), ]
+    raw.data.order <- as.data.frame(raw.data.order)
     DATA <- head(raw.data.order,top.rank)
   }
   # gene model
@@ -141,7 +143,9 @@ run.anchor <- function (x = NULL,
   ############
   BestOrder <- colnames(DATA)
   #### order colnames by the original data
-  data <- data[ , order(match(names(data),BestOrder))]
+  data <- as.matrix(data)
+  data <- data[ , order(match(colnames(data),BestOrder))]
+  data <- as.data.frame(data)
   ### PCA
   ###
   message(" Running PCA ...")

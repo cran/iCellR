@@ -3,6 +3,7 @@
 #' This function takes an object of class iCellR and runs UMAP on PCA data.
 #' @param x An object of class iCellR.
 #' @param dims PC dimentions to be used for UMAP analysis.
+#' @param my.seed seed number, default = 0.
 #' @param n_neighbors The size of local neighborhood (in terms of number of
 #'   neighboring sample points) used for manifold approximation. Larger values
 #'   result in more global views of the manifold, while smaller values result in
@@ -292,6 +293,7 @@
 #' @import uwot
 #' @export
 run.umap <- function (x = NULL,
+                      my.seed = 0,
                       dims = 1:10,
                       n_neighbors = 15,
                       n_components = 2,
@@ -334,6 +336,7 @@ run.umap <- function (x = NULL,
   }
   # https://github.com/lmcinnes/umap
   # get PCA data
+  set.seed(my.seed)
   DATA <- x@pca.data
   DATA <- DATA[dims]
 ################ uwot

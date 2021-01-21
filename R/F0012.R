@@ -35,7 +35,9 @@ run.pca <- function (x = NULL,
   }
   # model base mean rank
   if (method == "base.mean.rank") {
-    raw.data.order <- DATA[ order(rowMeans(DATA), decreasing = TRUE), ]
+    dataMat <- as.matrix(DATA)
+    raw.data.order <- dataMat[ order(rowMeans(dataMat), decreasing = TRUE), ]
+    raw.data.order <- as.data.frame(raw.data.order)
     TopNormLogScale <- head(raw.data.order,top.rank)
   }
   # gene model

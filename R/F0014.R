@@ -28,8 +28,9 @@ find.dim.genes <- function (x = NULL,
   ##
   for (i in PCs) {
     data <- DATA[i]
-    data <- cbind(data, genes=row.names(data))
-    data <- data[order(data[1], decreasing = TRUE),]
+    dat <- as.matrix(data)
+    data <- dat[order(dat, decreasing = TRUE),]
+    data <- as.data.frame(data)
     TOP <- row.names(head(data,top.pos))
     BOT <- row.names(tail(data,top.neg))
     MYgenes <- c(TOP,BOT)

@@ -7,7 +7,7 @@
 #' @param padjval Minimum adjusted p value for out put, default = 0.1.
 #' @param Inf.FCs If set to FALSE the infinite fold changes would be filtered from out put, default = FALSE.
 #' @param uniq If set to TRUE only genes that are a marker for only one cluster would be in the out put, default = FALSE.
-#' @param positive If set to FALSE both the up regulated (positive) and down regulated (negative) markers would be in the out put, default = FALSE.
+#' @param positive If set to FALSE both the up regulated (positive) and down regulated (negative) markers would be in the out put, default = TRUE.
 #'
 #' @return An object of class iCellR
 #' @examples
@@ -132,7 +132,11 @@ findMarkers <- function (x = NULL,
 ####
   if (uniq == TRUE) {
     data <- (as.data.frame(table(df$gene)))
-    datanew <- (data[order(data$Freq, decreasing = TRUE),])
+  ###########
+    ToSort <- data$Freq
+    datanew <- as.matrix(data)
+    datanew <- (datanew[order(ToSort, decreasing = TRUE),])
+    datanew <- as.data.frame(data)
     datanew <- subset(datanew, datanew$Freq == 1)
     datanew <- as.character(datanew$Var1)
     myDATA = df
@@ -143,8 +147,24 @@ findMarkers <- function (x = NULL,
     df <- subset(df, log2FoldChange != Inf)
     df <- subset(df, log2FoldChange != Inf & log2FoldChange != -Inf)
   }
-  df <- df[order(df$log2FoldChange,decreasing = TRUE),]
-  df <- df[order(df$clusters,decreasing = FALSE),]
+  ########
+#### old
+#  df <- df[order(df$log2FoldChange,decreasing = TRUE),]
+#  df <- df[order(df$clusters,decreasing = FALSE),]
+#### new
+  myFC <- df$log2FoldChange
+  dfm <- as.matrix(df)
+  dfm <- dfm[order(myFC, decreasing = TRUE),]
+  #
+  dfm <- as.data.frame(dfm)
+  myClustOrd <- dfm$clusters
+  dfm <- as.matrix(dfm)
+  dfm <- dfm[order(myClustOrd, decreasing = FALSE),]
+  df <- as.data.frame(dfm)
+  #######
+  df$clusters <- as.numeric(df$clusters)
+  df$baseMean <- as.numeric(df$baseMean)
+######
   message("All done!")
   return(df)
 }

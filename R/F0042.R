@@ -61,13 +61,25 @@ vdj.stats <- function (my.vdj = "data.frame") {
           axis.ticks.y=element_blank()) + coord_polar(theta="y") + facet_wrap(~ chain, ncol =1)
   #
   data <- (unique(subset(ChainB, ChainB$Quantile == "Q3")))
-  data <- (data[order(data$my.vdj.clonotype.Freq, decreasing = TRUE),])
   data1 <- (unique(subset(ChainA, ChainA$Quantile == "Q3")))
-  data1 <- (data1[order(data1$my.vdj.clonotype.Freq, decreasing = TRUE),])
-  DATA <- rbind(data,data1)
-  DATA <- (DATA[order(DATA$my.vdj.clonotype.Freq, decreasing = TRUE),])
+#######
+  ToSort <- data$my.vdj.clonotype.Freq
+  data <- as.matrix(data)
+  data <- (data[order(ToSort, decreasing = TRUE),])
+#######
+  ToSort1 <- data1$my.vdj.clonotype.Freq
+  data1 <- as.matrix(data1)
+  data1 <- (data1[order(ToSort1, decreasing = TRUE),])
+#####
+  DATA <- as.data.frame(rbind(data,data1))
+  ToSort2 <- DATA$my.vdj.clonotype.Freq
+  DATA <- as.matrix(DATA)
+  DATA <- (DATA[order(ToSort2, decreasing = TRUE),])
+  DATA <- as.data.frame(DATA)
+#####
   colnames(DATA) <- c("freq","colonotype","chain","cdr3","Q")
   DATA$cdr3 <- factor(DATA$cdr3, levels = rev(unique(DATA$cdr3)))
+  DATA$freq <- as.numeric(DATA$freq)
   freq = log2(DATA$freq)
   myPLOT <- ggplot(DATA,aes(x= freq, y=cdr3, col=chain)) +
     geom_line() + geom_point(size = freq) +

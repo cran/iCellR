@@ -6,6 +6,7 @@
 \usage{
 run.umap(
   x = NULL,
+  my.seed = 0,
   dims = 1:10,
   n_neighbors = 15,
   n_components = 2,
@@ -47,6 +48,8 @@ run.umap(
 }
 \arguments{
 \item{x}{An object of class iCellR.}
+
+\item{my.seed}{seed number, default = 0.}
 
 \item{dims}{PC dimentions to be used for UMAP analysis.}
 

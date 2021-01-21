@@ -26,7 +26,13 @@ prep.vdj <- function (vdj.data = "data.frame", cond.name = "NULL") {
   my.vdj$barcode <- cell.barcodes
   mysum <- (dim(my.vdj)[1]) / 2
   myFreq <- as.data.frame(table(my.vdj$raw_clonotype_id))
-  myFreq <- myFreq[order(myFreq$Freq, decreasing = TRUE),]
+  ####
+  FreqOrd <- myFreq$Freq
+  myFreqMat <- as.matrix(myFreq)
+  myFreqMat <- myFreqMat[order(FreqOrd, decreasing = TRUE),]
+  myFreq <- as.data.frame(myFreqMat)
+  myFreq$Freq <- as.numeric(myFreq$Freq)
+  ####
   myFreq$Freq <- (round(myFreq$Freq / 2))
   colono.sum <- dim(myFreq)[1]
   myFreq$my.raw_clonotype_id <- myFreq$Var1

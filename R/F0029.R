@@ -21,7 +21,7 @@ top.markers <- function (x = NULL, topde = 10,
   MyClusts <- (unique(x$clusters))
   # get rid of ambig genes (more than 1 cluster)
   data <- (as.data.frame(table(x$gene)))
-  datanew <- (data[order(data$Freq, decreasing = TRUE),])
+  datanew <- data
   datanew1 <- subset(datanew, datanew$Freq == 1)
   datanew1 <- as.character(datanew1$Var1)
   myDATA = x
@@ -29,7 +29,7 @@ top.markers <- function (x = NULL, topde = 10,
   if(filt.ambig == TRUE) {
     x = myDATA
   }
-#  x <- x[order(x$baseMean,decreasing = T),]
+############
   for (i in MyClusts) {
     DATA <- subset(x, x$clusters == i)
     DATA <- subset(DATA, DATA$baseMean >= min.base.mean)

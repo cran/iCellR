@@ -56,7 +56,8 @@ run.tsne <- function (x = NULL,
   DATA <- x@main.data
   # model base mean rank
   if (clust.method == "base.mean.rank") {
-    raw.data.order <- DATA[ order(rowMeans(DATA), decreasing = TRUE), ]
+    dataMat <- as.matrix(DATA)
+    raw.data.order <- dataMat[ order(rowMeans(dataMat), decreasing = TRUE), ]
     topGenes <- head(raw.data.order,top.rank)
     TopNormLogScale <- log(topGenes + 0.1)
 #    TopNormLogScale <- t(TopNormLogScale)

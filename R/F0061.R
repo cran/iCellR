@@ -16,7 +16,10 @@ myImp <- function (x = NULL) {
     dists = as.data.frame(as.matrix(dist(t(data), method = "euclidean")))[1]
     colnames(dists) <- "myDist"
     mydata <- as.data.frame(cbind(dists,DATA))
-    mydata <- (mydata[order(mydata$myDist, decreasing = TRUE),])
+    DistOrd <- mydata$myDist
+    mydata <- as.matrix(mydata)
+    mydata <- (mydata[order(DistOrd, decreasing = TRUE),])
+    mydata <- as.data.frame(mydata)
     mydata <-  mydata[,-1]
     LG <- length(row.names(mydata))
     PRCENT = round((LG/100) * 4)

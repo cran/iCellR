@@ -27,7 +27,7 @@ findMarkers(
 
 \item{uniq}{If set to TRUE only genes that are a marker for only one cluster would be in the out put, default = FALSE.}
 
-\item{positive}{If set to FALSE both the up regulated (positive) and down regulated (negative) markers would be in the out put, default = FALSE.}
+\item{positive}{If set to FALSE both the up regulated (positive) and down regulated (negative) markers would be in the out put, default = TRUE.}
 }
 \value{
 An object of class iCellR

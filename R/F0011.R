@@ -82,7 +82,9 @@ make.gene.model <- function (x = NULL,
   sg2m <- paste(sg2m,collapse="|")
   Cell.Cycle <- grep(sg2m, x = data$genes, value = TRUE, ignore.case = TRUE)
  # variables
-  cellCountLimit = as.numeric(tail(head(data[order(data$meanExp, decreasing = T),],base.mean.rank)[2],1))
+  To.ord <- as.numeric(data$meanExp)
+  dataMat <- as.matrix(data)
+  cellCountLimit = as.numeric(tail(head(as.data.frame(dataMat[order(To.ord, decreasing = T),]),base.mean.rank)[2],1))
   top.rank.line = as.numeric(log2(cellCountLimit))
   SDlimit = dispersion.limit
 # add data colors
@@ -134,7 +136,9 @@ make.gene.model <- function (x = NULL,
       data <- subset(DATA, DATA$condition == i)
       data1 <- subset(data, data$SDs > dispersion.limit)
       data1 <- as.character(data1$genes)
-      data2 <- head(data[order(data$meanExp, decreasing = TRUE),],base.mean.rank)
+      To.ord <- as.numeric(data$meanExp)
+      dataMat <- as.matrix(data)
+      data2 <- as.data.frame(head(dataMat[order(To.ord, decreasing = TRUE),],base.mean.rank))
       data2 <- as.character(data2$genes)
       bestGenes <- unique(sort(c(data2,data1)))
       if (no.mito.model == TRUE) {
