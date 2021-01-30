@@ -95,11 +95,14 @@ utils::globalVariables(c("%>%",
                          "V<-",
                          "AddModuleScoreme",
                          "genes.list",
-                         "annotate"))
+                         "annotate",
+                         "V5",
+                         "V6"))
 #########
 # F001.load10x.R | F001.R
 # F002.data.aggregation.R | F002.R
 # F003.make.obj.R | F003.R
+# F044.myclass.R | F0044.R
 # F004.qc.stats.R | F004.R
 # F005.stats.plot.R | F005.R
 # F006.cell.filter.R | F006.R
@@ -140,7 +143,6 @@ utils::globalVariables(c("%>%",
 # F041.clono.plot.R | F0041.R
 # F042vdj.stats.R | F0042.R
 # F043.run.tsne.R | F0043.R
-# F044.myclass.R | F0044.R
 # F045.cc.R | F0045.R
 # RcppExports.R | F0046.R
 # Rphenograph.R | F0047.R
@@ -164,6 +166,8 @@ utils::globalVariables(c("%>%",
 # run.anchor.R | F0065.R
 # run.mnn.R | F0066.R
 # run.phenograph.r | F0067.R
-
+# image.capture.10x.R | F0068.R
+# add.10x.image.R | F0069.R
+# spatial.plot.R | F0070.R
 
 

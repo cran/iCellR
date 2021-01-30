@@ -2,7 +2,7 @@
 #'
 #' This function takes an object of class iCellR and provides plots for genes.
 #' @param x An object of class iCellR.
-#' @param gene A gene name to be plotted.
+#' @param gene Gene name/names to be plotted.
 #' @param box.to.test A cluster number so that all the boxes in the box plot would be compared to. If set to "0" the cluster with the highest avrage would be choosen, default = 0.
 #' @param box.pval Choose from "sig.values" and "sig.signs". If set to "sig.signs" p values would be replaced with signs ("na", "*", "**", "***"), default = "sig.signs".
 #' @param plot.data.type Choose between "tsne", "pca", "umap", "knetl", "diffusion", "pseudo.A" and "pseudo.B", default = "tsne".

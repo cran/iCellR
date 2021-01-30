@@ -1,8 +1,8 @@
-e83ded071f8e0a5256d0afcdcf93a536 *DESCRIPTION
-74edf8c45f490d0ed1d06219c9730f3e *NAMESPACE
+e23ea737119e8534f45b83905810bbdc *DESCRIPTION
+48c68170675d64e827c8fd66034f99a6 *NAMESPACE
 f9b7531f117d6b3ef3da9e9f752ca24e *R/F001.R
 68c7b05da4358b5f1ebeb791da6e6a2c *R/F0010.R
-124f4345d6e354c94e25535bc53b4bd8 *R/F00100.R
+f2a57cd2826233ac1ec636b117158a30 *R/F00100.R
 e83a274d237c18fe20eead817bc8dd6e *R/F0011.R
 f9fc8a3b2177a72b6292a2aeccb6c05b *R/F0012.R
 63b4588564c68b0e39879c4da79888ce *R/F0013.R
@@ -24,8 +24,8 @@ ce5050ee3da1466395dfdb9f43212551 *R/F0027.R
 a03ccd6cf1379cf2c4f9d0f4ff0d83e7 *R/F0028.R
 af764cb7bfd43ee78344f1f53e1314ae *R/F0029.R
 7b94d4d5e0335b2f20e655ae17957dd6 *R/F003.R
-a26d1a5c18b1b40d12b31719eb8c632c *R/F0030.R
-0a49f9db1f6685472bc562c7bf408810 *R/F0031.R
+3bea2f3d90f3d21c958fd818359040f7 *R/F0030.R
+f2b87ff5ddc856e13a119767af325640 *R/F0031.R
 31db1dfe262eb263254f493a1025b638 *R/F0032.R
 17bf11116f5c2ea6008b2de01f58ce53 *R/F0033.R
 e09f630e608c057b89b0658a02ae97e8 *R/F0034.R
@@ -39,7 +39,7 @@ dcaa01da425f27abaffef7e07dac36a8 *R/F0040.R
 478c7ddd8b32c9a7a30f710a77651970 *R/F0041.R
 5e8e5b19ad5f792ac859dbdf7f77bebc *R/F0042.R
 7e576c54d22638413e71f86116bfb0d5 *R/F0043.R
-d7c605771f6a712e0246d70be0ad9d1a *R/F0044.R
+75cd1b6cfc0fcda9a9bf8cba6e286e99 *R/F0044.R
 e5bf9b47fd40ac13fe0a686e302f00da *R/F0045.R
 39f62b0c49ca507f4c2e39d9e2d07f40 *R/F0046.R
 e4d515557cb90decc2901e8d743b74fb *R/F0047.R
@@ -64,7 +64,10 @@ d1e1c07fe92bcafb8ca3fda14d28b578 *R/F0062.R
 5520138403750727ce35d93456fc5a1d *R/F0065.R
 bb0309462aa34f74292dbd58fd946c59 *R/F0066.R
 7398d54a3086eb17c28fd1d0658377d3 *R/F0067.R
+b852b40350ec63cb034a7c86cbb36f91 *R/F0068.R
+35187273e92357676e2547fe9fc75a43 *R/F0069.R
 a1f5cb6f92d880381b56e48e10e7b5a3 *R/F007.R
+d12befac9c39f6c4bd7db8cd166ff0f6 *R/F0070.R
 a218394ba308dbaf8d103f961022a52b *R/F008.R
 88d62ee4eabb147dcc67e1b7190b34f3 *R/F009.R
 39f62b0c49ca507f4c2e39d9e2d07f40 *R/RcppExports.R
@@ -85,9 +88,11 @@ abdd67c8870e90c6478a8d72738e5730 *inst/extdata/filtered_gene_bc_matrices/barcode
 14d4f657ac05179e2dfbacc5ea029dfa *inst/extdata/filtered_gene_bc_matrices/genes.tsv.gz
 11ac1abe9f1f55dd29a2759ec0856ef3 *inst/extdata/filtered_gene_bc_matrices/matrix.mtx.gz
 e595a595ba1f4cd3f25717389ea23411 *man/Rphenograph.Rd
+cbb9d2e16a7a448731c5155c134c854c *man/add.10x.image.Rd
 f927cbb6f567b98bdfacde8e82850b49 *man/add.adt.Rd
 a2453c982fa2e4c10803fdaf7f6edc4a *man/add.vdj.Rd
 b9ebbaf869321394b9a4d01f51ad8ec7 *man/adt.rna.merge.Rd
+38f78135ee03d1590eb324ca49d4dce6 *man/capture.image.10x.Rd
 bce3095effe7b089fa08d3137dff36e0 *man/cc.Rd
 8e1c77b2103058fada7f539507c08d44 *man/cell.cycle.Rd
 357b5afcce22163d921960051c6739e0 *man/cell.filter.Rd
@@ -110,7 +115,7 @@ eb31c5dd5e35134608f7da273a57a85e *man/find.dim.genes.Rd
 0ab3f37743f9b565f1d1134911931dc6 *man/find_neighbors.Rd
 78a5c4d95cc905c211456a7c63c35788 *man/g2m.phase.Rd
 604ad0fc096a7bdd5f044fa5cd101d68 *man/gate.to.clust.Rd
-3426b67d38444681f5d5182a04484b25 *man/gene.plot.Rd
+b96fc1728bdb12c2bb2be156a9143155 *man/gene.plot.Rd
 bfc4b049b75a683de45b1978157c6142 *man/gene.stats.Rd
 5eb486b634f4d7fd8741d4a719b7f384 *man/gg.cor.Rd
 d37deb091c64e573a59781d3e7d1714f *man/heatmap.gg.plot.Rd
@@ -144,6 +149,7 @@ dfb244d46e430c37840fb54cd90a4639 *man/run.mnn.Rd
 db89974e280f935b5b9ea5329bb446da *man/run.tsne.Rd
 01699d1ec8fc78cd25bd74536b5f79fe *man/run.umap.Rd
 5102e836b6fd5ae1ca784bcb56d8c5e8 *man/s.phase.Rd
+428d77811ca66a08c7c19ec2fef1080d *man/spatial.plot.Rd
 95e9fdc0e42afcd0dca7acf2dbcc2637 *man/stats.plot.Rd
 637406561fd4afc399b9d724551efc4a *man/top.markers.Rd
 42cbe52e4b333cbbe73406e001bff18d *man/vdj.stats.Rd

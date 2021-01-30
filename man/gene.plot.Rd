@@ -35,7 +35,7 @@ gene.plot(
 \arguments{
 \item{x}{An object of class iCellR.}
 
-\item{gene}{A gene name to be plotted.}
+\item{gene}{Gene name/names to be plotted.}
 
 \item{cond.shape}{If TRUE the conditions will be shown in shapes.}
 
