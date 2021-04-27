@@ -2,7 +2,7 @@
 #'
 #' This function takes an object of class iCellR and performs differential expression (DE) analysis to find marker genes for each cluster.
 #' @param x An object of class iCellR.
-#' @param data.type Choose from "main" and "imputed", default = "main"
+#' @param data.type Choose from "main", "atac", "atac.imputed" and "imputed", default = "main"
 #' @param fold.change A number that designates the minimum fold change for out put, default = 2.
 #' @param pval.test Choose from "t.test", "wilcox.test", default = "t.test".
 #' @param p.adjust.method Correction method. Choose from "holm", "hochberg", "hommel", "bonferroni", "BH", "BY","fdr", "none", default = "hochberg".
@@ -34,10 +34,20 @@ findMarkers <- function (x = NULL,
   if (data.type == "imputed") {
     dat <- x@imputed.data
   }
+  if (data.type == "atac") {
+    dat <- x@atac.main
+  }
+  if (data.type == "atac.imputed") {
+    dat <- x@atac.imputed
+  }
   # get cluster data
   # get avrages
-  x <- clust.avg.exp(x, data.type = data.type)
+    x <- clust.avg.exp(x, data.type = data.type)
+##########
   DATA <- x@best.clust
+  if(!is.numeric(DATA$clusters)){
+    stop("Cluster names have to be numeric")
+  }
   ############## set wich clusters you want as condition 1 and 2
   MyClusts <- as.numeric(unique(DATA$clusters))
   MyClusts <- sort(MyClusts)
@@ -169,8 +179,8 @@ findMarkers <- function (x = NULL,
   dfm <- dfm[order(myClustOrd, decreasing = FALSE),]
   df <- as.data.frame(dfm)
   #######
-  df$clusters <- as.numeric(df$clusters)
-  df$baseMean <- as.numeric(df$baseMean)
+  df$clusters <- as.numeric(as.character(df$clusters))
+  df$baseMean <- as.numeric(as.character(df$baseMean))
 ######
   message("All done!")
   return(df)
