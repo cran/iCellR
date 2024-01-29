@@ -26,6 +26,7 @@ utils::globalVariables(c("%>%",
                          "cells",
                          "chain",
                          "clusters",
+                         "cluster",
                          "color",
                          "conditions",
                          "distance",
@@ -176,4 +177,6 @@ utils::globalVariables(c("%>%",
 # add.10x.image.R | F0069.R
 # spatial.plot.R | F0070.R
 # i.score.R | F0071.R
+# bubble.gg.plot.R | F0072.R
+# ############### F0100.R ################# and F0044.R ######################
 
